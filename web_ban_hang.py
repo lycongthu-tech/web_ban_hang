@@ -52,16 +52,18 @@ def trang_chu():
         anh_sp = sp["hinh_anh"]
         
         html_san_pham += f"""
-        <div class="bg-slate-800 rounded-xl overflow-hidden shadow-lg border border-slate-700 hover:border-pink-500 transition-all duration-300 flex flex-col justify-between">
-            <img src="{anh_sp}" class="w-full h-48 object-cover" alt="{ten_sp}">
-            <div class="p-4 flex-grow flex flex-col justify-between">
-                <div>
-                    <h3 class="text-white font-semibold text-base line-clamp-2 mb-2">{ten_sp}</h3>
-                    <p class="text-pink-500 font-bold text-lg mb-4">{gia_sp}</p>
+        <div class="col">
+            <div class="card h-100 bg-secondary text-white border-dark shadow-sm">
+                <img src="{anh_sp}" class="card-img-top" alt="{ten_sp}" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title text-truncate-2">{ten_sp}</h5>
+                        <p class="card-text text-warning fw-bold fs-5">{gia_sp}</p>
+                    </div>
+                    <a href="/mua/{id_sp}" class="btn btn-danger w-full mt-3 fw-bold">
+                        🛒 Mua Ngay Trên TikTok
+                    </a>
                 </div>
-                <a href="/mua/{id_sp}" class="block text-center bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 rounded-lg transition duration-200 shadow-md">
-                    🛒 Mua Ngay Trên TikTok
-                </a>
             </div>
         </div>
         """
@@ -73,69 +75,61 @@ def trang_chu():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lý Công Thức - Gym & Sports Store</title>
-        <script src="https://tailwindcss.com"></script>
+        <!-- Thay sang CSS Bootstrap ổn định, không bị Render chặn -->
+        <link href="https://jsdelivr.net" rel="stylesheet">
+        <style>
+            body {{ background-color: #111827; color: #d1d5db; }}
+            .navbar {{ background-color: #030712 !important; border-b: 1px solid #1f2937; }}
+            .hero-section {{ background-color: #030712; padding: 60px 20px; border-bottom: 1px solid #1f2937; }}
+            .footer {{ background-color: #030712; border-t: 1px solid #1f2937; color: #6b7280; font-size: 0.8rem; py: 30px; }}
+            .text-truncate-2 {{ display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }}
+        </style>
     </head>
-    <body class="bg-slate-900 text-slate-300 font-sans min-h-screen flex flex-col justify-between">
+    <body>
 
-        <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                <span class="text-white font-black text-xl tracking-wider uppercase">
-                    💥 LÝ CÔNG THỨC <span class="text-pink-500">STORE</span>
-                </span>
-                <div class="space-x-6 text-sm font-medium hidden md:block">
-                    <a href="#" class="text-pink-500">Trang Chủ</a>
-                    <a href="#" class="hover:text-white transition">Sản Phẩm</a>
-                    <a href="#" class="hover:text-white transition">Phụ Kiện Gym</a>
-                    <a href="#" class="hover:text-white transition">Liên Hệ</a>
-                </div>
+        <!-- MENU -->
+        <nav class="navbar navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-uppercase tracking-wider" href="#">
+                    💥 LÝ CÔNG THỨC <span class="text-danger">STORE</span>
+                </a>
             </div>
         </nav>
 
-        <div class="relative bg-slate-950 overflow-hidden border-b border-slate-800">
-            <div class="relative max-w-7xl mx-auto px-4 py-16 text-center">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">
-                    Bộ Sưu Tập <span class="text-pink-500">Thời Trang & Phụ Kiện Gym</span>
-                </h2>
-                <p class="text-slate-400 max-w-xl mx-auto text-base">
-                    Chuyên phụ kiện tập gym chất lượng cao cho anh em thể hình. Uy tín, chất lượng, đồng hành cùng cơ bắp của bạn.
-                </p>
+        <!-- BANNER -->
+        <div class="hero-section text-center">
+            <div class="container">
+                <h1 class="display-5 fw-bold text-white uppercase">Bộ Sưu Tập <span class="text-danger">Thời Trang & Gym</span></h1>
+                <p class="lead text-secondary max-w-xl mx-auto fs-6">Chuyên phụ kiện tập gym chất lượng cao cho anh em thể hình. Uy tín, chất lượng.</p>
             </div>
         </div>
 
-        <main class="max-w-7xl mx-auto px-4 py-10 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <div class="lg:col-span-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    {html_san_pham}
+        <!-- MAIN CONTENT -->
+        <div class="container my-5">
+            <div class="row">
+                <!-- CỘT TRÁI SẢN PHẨM -->
+                <div class="col-lg-9">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        {html_san_pham}
+                    </div>
                 </div>
-            </div>
-
-            <div class="space-y-6">
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 shadow-md">
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-l-4 border-pink-500 pl-2">Khách Hàng Nói Về Chúng Tôi</h4>
-                    <div class="space-y-4">
-                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
-                            <p class="text-xs italic text-slate-400">"Áo mặc ôm body rất khít, tập gym tôn dáng lắm shop ơi!"</p>
-                            <p class="text-right text-xs text-pink-500 font-semibold mt-2">- Tuấn Anh Nguyễn</p>
-                        </div>
+                <!-- CỘT PHẢI SIDEBAR -->
+                <div class="col-lg-3 mt-4 mt-lg-0">
+                    <div class="p-3 bg-dark rounded border border-secondary shadow-sm mb-4">
+                        <h6 class="text-white uppercase fw-bold border-start border-danger border-3 ps-2 mb-3">Đánh Giá Khách Hàng</h6>
+                        <p class="small text-secondary italic">"Áo mặc ôm body rất khít, tập gym tôn dáng lắm shop ơi!"</p>
+                        <p class="small text-danger fw-bold text-end mb-0">- Tuấn Anh Nguyễn</p>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
 
-        <footer class="bg-slate-950 border-t border-slate-800 text-xs text-slate-500 py-8">
-            <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h5 class="text-white font-bold uppercase mb-3">Về LÝ CÔNG THỨC STORE</h5>
-                    <p class="leading-relaxed">Hệ thống phân phối phụ kiện gym hàng đầu cho Gymer. Kết nối trực tiếp sản phẩm chính hãng qua TikTok Shop.</p>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold uppercase mb-3">Thông Tin Liên Hệ</h5>
-                    <p class="mb-1">📍 Địa chỉ kho: Quận 12, Thành phố Hồ Chí Minh</p>
-                    <p class="mb-1">✉️ Email: lycongthu@gmail.com</p>
-                </div>
-            </div>
-            <div class="text-center mt-8 pt-4 border-t border-slate-900 text-slate-600">
-                © 2026 LÝ CÔNG THỨC STORE. All rights reserved.
+        <!-- FOOTER -->
+        <footer class="footer bg-dark py-4 text-center border-top border-secondary">
+            <div class="container">
+                <p class="mb-1">📍 Địa chỉ kho: Quận 12, Thành phố Hồ Chí Minh</p>
+                <p class="mb-1">✉️ Email: lycongthu@gmail.com</p>
+                <p class="text-muted mb-0">© 2026 LÝ CÔNG THỨC STORE. All rights reserved.</p>
             </div>
         </footer>
 
