@@ -3,34 +3,34 @@ from fastapi.responses import RedirectResponse, HTMLResponse
 
 app = FastAPI()
 
-# CƠ SỞ DỮ LIỆU SẢN PHẨM THỂ THAO & HÌNH THỂ (Thay link TikTok Affiliate thật của bạn vào đây)
+# CƠ SỞ DỮ LIỆU SẢN PHẨM (Đã sửa link ảnh hệ thống chuẩn hiển thị 100%)
 DANH_SACH_SAN_PHAM = [
     {
         "id": 1,
         "ten": "Bình Nước Thể Thao Giữ Nhiệt 1L",
         "gia": "180.000đ",
-        "hinh_anh": "https://unsplash.com",
-        "link_tiktok": "https://tiktok.com" # Thay link thật của bạn vào trong dấu ""
+        "hinh_anh": "https://placehold.co",
+        "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 2,
         "ten": "Dây Kháng Lực Tập Gym Tại Nhà (Set 5 Mức)",
         "gia": "125.000đ",
-        "hinh_anh": "https://unsplash.com",
+        "hinh_anh": "https://placehold.co",
         "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 3,
         "ten": "Thảm Tập Yoga Chống Trượt Cao Cấp",
         "gia": "220.000đ",
-        "hinh_anh": "https://unsplash.com",
+        "hinh_anh": "https://placehold.co",
         "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 4,
         "ten": "Đai Lưng Hỗ Trợ Gánh Đùi Deadlift",
         "gia": "310.000đ",
-        "hinh_anh": "https://unsplash.com",
+        "hinh_anh": "https://placehold.co",
         "link_tiktok": "https://tiktok.com"
     }
 ]
