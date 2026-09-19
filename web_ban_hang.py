@@ -7,17 +7,17 @@ app = FastAPI()
 DANH_SACH_SAN_PHAM = [
     {
         "id": 1,
-        "ten": "Bình Nước Thể Thao Giữ Nhiệt 1L",
-        "gia": "180.000đ",
+        "ten": "Áo Thun Thể Thao Tập Gym Nam",
+        "gia": "99.000đ",
         "hinh_anh":"https://n7media.coolmate.me/uploads/September2025/ao-thun-nam-gym-power-dang-tights-co-gian-exdry-thoang-mat-den-1.jpg?aio=w-1100",
-        "link_tiktok": "https://tiktok.com"
+        "link_tiktok": "https://vt.tiktok.com/ZS9Aj3tEfa5CK-90jgA/"
     },
     {
         "id": 2,
-        "ten": "Dây Kháng Lực Tập Gym Tại Nhà (Set 5 Mức)",
-        "gia": "125.000đ",
+        "ten": "Áo Thun Thể Thao Tập Gym Nam Đen",
+        "gia": "100.000đ",
         "hinh_anh": "https://thegioidotap.vn/wp-content/uploads/2024/05/Ao-tap-gym-nam-1.jpg",
-        "link_tiktok": "https://tiktok.com"
+        "link_tiktok": "https://vt.tiktok.com/ZS9AjTyWAwFDf-RQWmX/"
     },
     {
         "id": 3,
