@@ -9,14 +9,14 @@ DANH_SACH_SAN_PHAM = [
         "id": 1,
         "ten": "Bình Nước Thể Thao Giữ Nhiệt 1L",
         "gia": "180.000đ",
-        "hinh_anh": "https://placehold.co",
+        "hinh_anh":"https://n7media.coolmate.me/uploads/September2025/ao-thun-nam-gym-power-dang-tights-co-gian-exdry-thoang-mat-den-1.jpg?aio=w-1100",
         "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 2,
         "ten": "Dây Kháng Lực Tập Gym Tại Nhà (Set 5 Mức)",
         "gia": "125.000đ",
-        "hinh_anh": "https://placehold.co",
+        "hinh_anh": "https://thegioidotap.vn/wp-content/uploads/2024/05/Ao-tap-gym-nam-1.jpg",
         "link_tiktok": "https://tiktok.com"
     },
     {
