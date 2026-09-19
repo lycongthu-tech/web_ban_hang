@@ -168,7 +168,7 @@ def trang_chu():
     """
     return html_content
 
-@app.get("/mua/{{id_san_pham}}")
+@app.get("/mua/{id_san_pham}")
 def dieu_huong_tiktok(id_san_pham: int):
     # Tìm link affiliate của sản phẩm dựa trên ID khách bấm
     for sp in DANH_SACH_SAN_PHAM:
