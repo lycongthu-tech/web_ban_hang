@@ -76,7 +76,7 @@ def trang_chu():
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Lý Công Thức - Gym & Sports Store</title>
         <!-- Thay sang CSS Bootstrap ổn định, không bị Render chặn -->
-        <link href="https://jsdelivr.net" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body {{ background-color: #111827; color: #d1d5db; }}
             .navbar {{ background-color: #030712 !important; border-b: 1px solid #1f2937; }}
