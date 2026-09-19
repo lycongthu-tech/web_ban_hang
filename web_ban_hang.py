@@ -52,21 +52,15 @@ def trang_chu():
         anh_sp = sp["hinh_anh"]
         
         html_san_pham += f"""
-        <div class="col">
-            <div class="card h-100 bg-secondary text-white border-dark shadow-sm">
-                <img src="{anh_sp}" class="card-img-top" alt="{ten_sp}" style="height: 200px; object-fit: cover;">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title text-truncate-2">{ten_sp}</h5>
-                        <p class="card-text text-warning fw-bold fs-5">{gia_sp}</p>
-                    </div>
-                    <a href="/mua/{id_sp}" class="btn btn-danger w-full mt-3 fw-bold">
-                        🛒 Mua Ngay Trên TikTok
-                    </a>
-                </div>
-            </div>
-        </div>
-        """
+        <div class="card">
+    <img src="{anh_sp}" alt="{ten_sp}">
+    <div class="card-body">
+        <h5 class="card-title">{ten_sp}</h5>
+        <p class="card-text">{gia_sp}đ</p>
+        <a href="/mua/{id_sp}" class="btn btn-danger">🛒 Mua Ngay Trên TikTok</a>
+    </div>
+</div>
+"""
 
     html_content = f"""
     <!DOCTYPE html>
@@ -77,13 +71,65 @@ def trang_chu():
         <title>Lý Công Thức - Gym & Sports Store</title>
         <!-- Thay sang CSS Bootstrap ổn định, không bị Render chặn -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body {{ background-color: #111827; color: #d1d5db; }}
-            .navbar {{ background-color: #030712 !important; border-b: 1px solid #1f2937; }}
-            .hero-section {{ background-color: #030712; padding: 60px 20px; border-bottom: 1px solid #1f2937; }}
-            .footer {{ background-color: #030712; border-t: 1px solid #1f2937; color: #6b7280; font-size: 0.8rem; py: 30px; }}
-            .text-truncate-2 {{ display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }}
-        </style>
+       body {{ background-color: #111827; color: #d1d5db; }}
+        .navbar {{ background-color: #030712 !important; border-bottom: 1px solid #1f2937; }}
+        .hero-section {{ background-color: #030712; padding: 25px 20px; border-bottom: 1px solid #1f2937; }}
+        .footer {{ background-color: #030712; border-top: 1px solid #1f2937; color: #9ca3af; }}
+        
+        /* Giao diện Card sản phẩm dạng hàng ngang nhỏ gọn mềm mại */
+        .card {{
+            background-color: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            display: flex !important;
+            flex-direction: row !important; /* Ép nội dung nằm ngang */
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 12px;
+        }}
+        
+        /* Thu nhỏ ảnh sản phẩm vừa vặn */
+        .card img {{
+            width: 80px !important;
+            height: 80px !important;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }}
+        
+        /* Khung thông tin chữ nhỏ gọn gàng bên phải */
+        .card-body {{
+            padding: 0 0 0 12px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }}
+        
+        .card-title {{
+            font-size: 0.9rem !important; /* Hạ cỡ chữ tiêu đề */
+            font-weight: 600;
+            color: #f3f4f6;
+            margin-bottom: 2px !important;
+            line-height: 1.3;
+        }}
+        
+        .card-text {{
+            font-size: 0.95rem !important; /* Hạ cỡ chữ giá tiền */
+            font-weight: 700;
+            color: #f59e0b !important;
+            margin-bottom: 6px !important;
+        }}
+        
+        /* Nút link TikTok thu nhỏ tinh tế */
+        .btn-danger {{
+            font-size: 0.75rem !important;
+            padding: 4px 12px !important;
+            border-radius: 20px !important;
+            background-color: #ef4444 !important;
+            border: none !important;
+            width: fit-content;
+        }}
     </head>
     <body>
 
