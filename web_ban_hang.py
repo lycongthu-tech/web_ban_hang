@@ -8,36 +8,33 @@ DANH_SACH_SAN_PHAM = [
     {
         "id": 1,
         "ten": "Áo Thun Nén Gym Nam - Dài Tay",
-        "gia": "109.000đ",
-        "hinh_anh": "https://img.lazcdn.com/g/p/f2e518da82946459f147d1911bcc3ea5.jpg_720x720q80.jpg",
+        "gia_cu": "180.000",
+        "gia": "109.000",
+        "hinh_anh": "https://navy.vn/wp-content/uploads/2021/04/4-9-2.jpg",
         "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 2,
         "ten": "Đai Lưng Hỗ Trợ Gánh Đùi Deadlift",
-        "gia": "310.000đ",
-        "hinh_anh": "https://unsplash.com",
+        "gia_cu": "450.000",
+        "gia": "310.000",
+        "hinh_anh": "", # Thức tự copy image address dán vào đây nha
         "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 3,
         "ten": "Thảm Tập Yoga Chống Trượt Cao Cấp",
-        "gia": "220.000đ",
-        "hinh_anh": "https://unsplash.com",
+        "gia_cu": "350.000",
+        "gia": "225.000",
+        "hinh_anh": "", # Thức tự copy image address dán vào đây nha
         "link_tiktok": "https://tiktok.com"
     },
     {
         "id": 4,
         "ten": "Bình Nước Thể Thao Giữ Nhiệt 1L",
-        "gia": "150.000đ",
-        "hinh_anh": "https://unsplash.com",
-        "link_tiktok": "https://tiktok.com"
-    },
-    {
-        "id": 5,
-        "ten": "Găng Tay Tập Gym Có Cuốn Cổ Tay",
-        "gia": "125.000đ",
-        "hinh_anh": "https://unsplash.com",
+        "gia_cu": "260.000",
+        "gia": "175.000",
+        "hinh_anh": "", # Thức tự copy image address dán vào đây nha
         "link_tiktok": "https://tiktok.com"
     }
 ]
@@ -49,19 +46,24 @@ def trang_chu():
         id_sp = sp["id"]
         ten_sp = sp["ten"]
         gia_sp = sp["gia"]
+        gia_cu_sp = sp["gia_cu"] # Thêm dòng này để gọi giá cũ
         anh_sp = sp["hinh_anh"]
+        
         html_san_pham += f"""
         <div class="col">
             <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column">
-                <!-- 1. Phần hình ảnh nằm phía trên: Khung chữ nhật đứng 3:4 tôn dáng -->
                 <div class="overflow-hidden bg-secondary w-100">
                     <img src="{anh_sp}" alt="{ten_sp}" class="w-100" style="aspect-ratio: 3 / 4 !important; object-fit: cover; display: block;">
                 </div>
-                <!-- 2. Phần thông tin chữ và nút bấm nằm phía dưới -->
                 <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
                     <div class="lh-sm mb-2">
                         <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
-                        <p class="card-text text-danger fw-bold mb-0" style="font-size: 0.85rem;">{gia_sp}đ</p>
+                        
+                        <!-- Khu vực hiển thị 2 mức giá: Giá cũ gạch ngang và Giá mới nổi bật -->
+                        <div class="d-flex align-items-center flex-wrap gap-1 mt-1">
+                            <span class="gia-moi fw-bold">{gia_sp}đ</span>
+                            <span class="gia-cu text-muted text-decoration-line-through small">{gia_cu_sp}đ</span>
+                        </div>
                     </div>
                     <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-auto" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
                         Mua Trên TikTok
@@ -126,22 +128,21 @@ def trang_chu():
             line-height: 1.3;
         }}
 
-        .card-text {{
-            font-size: 0.85rem !important;
-            font-weight: 700;
-            color: #f59e0b !important;
-            margin-bottom: 6px !important;
+        /* Định dạng giá cũ nhỏ mờ gạch ngang */
+        .gia-cu {{
+            font-size: 0.7rem !important;
+            color: #9ca3af !important;
         }}
 
-        .btn-danger {{
-            font-size: 0.65rem !important;
-            padding: 6px 0px !important;
-            border-radius: 8px !important;
-            background-color: #ef4444 !important;
-            border: none !important;
-            width: 100% !important;
-            display: block !important;
-            text-align: center;
+        /* Hiệu ứng đổi màu chữ nhấp nháy sống động cho giá mới */
+        @keyframes nhapNhayGia {{
+            0%, 100% {{ color: #ef4444; }} /* Màu đỏ rực */
+            50% {{ color: #fbbf24; }} /* Đổi sang màu vàng cam lấp lánh */
+        }}
+
+        .gia-moi {{
+            font-size: 0.95rem !important;
+            animation: nhapNhayGia 1.5s infinite ease-in-out; /* Nhấp nháy liên tục */
         }}
     /* Hiệu ứng nhịp thở phập phồng tỏa sáng cho nút bấm */
         @keyframes nhipThoButton {{
