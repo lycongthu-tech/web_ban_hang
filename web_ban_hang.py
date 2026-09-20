@@ -12,7 +12,7 @@ DANH_SACH_SAN_PHAM = [
         "danh_muc": "ao-gym",
         "tag": "Bán chạy",
         "link_affiliate": "https://vt.tiktok.com/ZS9AroE8UMsfw-ydKK6/",
-        "anh": "/static/ao_thun.jpg"
+        "anh": "/static/aot_thun.jpg"
     },
     {
         "id": 2,
