@@ -57,7 +57,7 @@ def trang_chu():
                 <div class="row g-0 h-100 flex-row">
                     <!-- 50% Ben trai: Chua hinh anh -->
                     <div class="col-6 bg-dark d-flex align-items-center justify-content-center overflow-hidden h-100">
-                        <img src="{anh_sp}" alt="{ten_sp}" class="img-fluid h-100 w-100" style="object-fit: cover;">
+                        <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover;">
                     </div>
                     <!-- 50% Ben phai: Chua chu va nut bam -->
                     <div class="col-6 p-2 d-flex flex-column justify-content-between text-start h-100">
