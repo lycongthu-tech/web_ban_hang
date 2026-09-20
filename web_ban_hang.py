@@ -45,7 +45,12 @@ DANH_SACH_SAN_PHAM = [
 @app.get("/", response_class=HTMLResponse)
 def trang_chu():
     html_san_pham = "" 
-    html_san_pham += f"""
+    for sp in DANH_SACH_SAN_PHAM:
+        id_sp = sp["id"]
+        ten_sp = sp["ten"]
+        gia_sp = sp["gia"]
+        anh_sp = sp["hinh_anh"]
+        html_san_pham += f"""
         <div class="col">
             <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 260px;">
                 <!-- Phan hinh anh nam phia tren: Phong to phu kin -->
