@@ -1,271 +1,197 @@
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
-from fastapi.responses import RedirectResponse
+import os
+from flask import Flask, render_template_string
 
-app = FastAPI()
+# Sử dụng cách khai báo chuỗi trực tiếp để tránh lỗi dính phông chữ hiển thị trên máy của bạn
+app = Flask("_main_")
 
+# 1. CƠ SỞ DỮ LIỆU SẢN PHẨM AFFILIATE (Dễ dàng thêm mới, chỉnh sửa tại đây)
 DANH_SACH_SAN_PHAM = [
     {
         "id": 1,
-        "ten": "Áo Thun Nén Gym Nam - Dài Tay",
-        "gia_cu": "180.000",
-        "gia": "109.000",
-        "hinh_anh": "https://navy.vn/wp-content/uploads/2021/04/4-9-2.jpg",
-        "link_tiktok": "https://tiktok.com"
+        "ten": "Áo Thun Nén Gym Nam - Dài Tay Cao Cấp",
+        "gia": "109.000đ",
+        "gia_cu": "180.000đ",
+        "danh_muc": "ao-gym",
+        "tag": "Bán chạy",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
     },
     {
         "id": 2,
-        "ten": "Đai Lưng Hỗ Trợ Gánh Đùi Deadlift",
-        "gia_cu": "450.000",
-        "gia": "310.000",
-        "hinh_anh": "", # Thức tự copy image address dán vào đây nha
-        "link_tiktok": "https://tiktok.com"
+        "ten": "Đai Lưng Hỗ Trợ Gánh Đùi Deadlift Chuyên Nghiệp",
+        "gia": "310.000đ",
+        "gia_cu": "450.000đ",
+        "danh_muc": "phu-kien",
+        "tag": "Bảo hộ",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
     },
     {
         "id": 3,
-        "ten": "Thảm Tập Yoga Chống Trượt Cao Cấp",
-        "gia_cu": "350.000",
-        "gia": "225.000",
-        "hinh_anh": "", # Thức tự copy image address dán vào đây nha
-        "link_tiktok": "https://tiktok.com"
+        "ten": "Thảm Tập Yoga Chống Trượt Giảm Chấn",
+        "gia": "225.000đ",
+        "gia_cu": "350.000đ",
+        "danh_muc": "phu-kien",
+        "tag": "Êm ái",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
     },
     {
         "id": 4,
-        "ten": "Bình Nước Thể Thao Giữ Nhiệt 1L",
-        "gia_cu": "260.000",
-        "gia": "175.000",
-        "hinh_anh": "", # Thức tự copy image address dán vào đây nha
-        "link_tiktok": "https://tiktok.com"
+        "ten": "Quần Short Tập Gym Nam 2 Lớp Co Giãn thoải mái",
+        "gia": "145.000đ",
+        "gia_cu": "220.000đ",
+        "danh_muc": "quan-gym",
+        "tag": "Mới về",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
+    },
+    {
+        "id": 5,
+        "ten": "Áo Ba Lỗ Tập Gym Nam Sát Nách Thấm Hút Mồ Hôi",
+        "gia": "89.000đ",
+        "gia_cu": "135.000đ",
+        "danh_muc": "ao-gym",
+        "tag": "Trending",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
+    },
+    {
+        "id": 6,
+        "ten": "Quần Dài Jogger Thể Thao Nam Co Giãn 4 Chiều",
+        "gia": "195.000đ",
+        "gia_cu": "290.000đ",
+        "danh_muc": "quan-gym",
+        "tag": "Basic",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
     }
 ]
 
-@app.get("/", response_class=HTMLResponse)
-def trang_chu():
-    html_san_pham = "" 
-    for sp in DANH_SACH_SAN_PHAM:
-        id_sp = sp["id"]
-        ten_sp = sp["ten"]
-        gia_sp = sp["gia"]
-        gia_cu_sp = sp["gia_cu"] # Thêm dòng này để gọi giá cũ
-        anh_sp = sp["hinh_anh"]
-        
-        html_san_pham += f"""
-        <div class="col">
-            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column">
-                <div class="overflow-hidden bg-secondary w-100">
-                    <img src="{anh_sp}" alt="{ten_sp}" class="w-100" style="aspect-ratio: 3 / 4 !important; object-fit: cover; display: block;">
+# 2. TOÀN BỘ GIAO DIỆN HTML, CSS TAILWIND VÀ JAVASCRIPT BỘ LỌC
+GIAO_DIEN_HTML = """
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LÝ CÔNG THỨC STORE - Tiếp Thị Liên Kết Đồ Gym Cao Cấp</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        .the-san-pham {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hidden-card {
+            opacity: 0;
+            transform: scale(0.9);
+            position: absolute;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <header class="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xl font-black text-red-600 tracking-wider">★ LÝ CÔNG THỨC STORE</span>
+            </div>
+            <p class="text-xs text-gray-500 font-medium bg-gray-50 px-3 py-1 rounded-full border border-gray-100">
+                Chuyên phụ kiện tập gym chất lượng cao cho anh em tập luyện
+            </p>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-4 mt-8 w-full">
+        <div class="flex flex-wrap items-center justify-center gap-2 pb-2">
+            <button onclick="locDanhMuc('all', this)" class="nut-loc px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-red-600 text-white shadow-sm border border-transparent transition-all">
+                Tất cả sản phẩm
+            </button>
+            <button onclick="locDanhMuc('ao-gym', this)" class="nut-loc px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-white text-gray-600 border border-gray-200 hover:border-gray-400 transition-all">
+                Áo tập gym
+            </button>
+            <button onclick="locDanhMuc('quan-gym', this)" class="nut-loc px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-white text-gray-600 border border-gray-200 hover:border-gray-400 transition-all">
+                Quần tập gym
+            </button>
+            <button onclick="locDanhMuc('phu-kien', this)" class="nut-loc px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-white text-gray-600 border border-gray-200 hover:border-gray-400 transition-all">
+                Phụ kiện & Đai lưng
+            </button>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 py-6 w-full flex-grow">
+        <div id="khung-chua-san-pham" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+            
+            {% for sp in san_pham %}
+            <div class="the-san-pham bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group" data-category="{{ sp.danh_muc }}">
+                <div class="w-full aspect-[3/4] bg-gray-50 overflow-hidden relative border-b border-gray-50">
+                    <img src="{{ sp.anh }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="{{ sp.ten }}">
+                    <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded shadow-sm">
+                        {{ sp.tag }}
+                    </span>
                 </div>
-                <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
-                    <div class="lh-sm mb-2">
-                        <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
-                        
-                        <!-- Khu vực hiển thị 2 mức giá: Giá cũ gạch ngang và Giá mới nổi bật -->
-                        <div class="d-flex align-items-center flex-wrap gap-1 mt-1">
-                            <span class="gia-moi fw-bold">{gia_sp}đ</span>
-                            <span class="gia-cu text-muted text-decoration-line-through small">{gia_cu_sp}đ</span>
+                
+                <div class="p-4 flex-grow flex flex-col justify-between text-center bg-white">
+                    <div class="mb-4">
+                        <h3 class="text-gray-800 font-bold text-sm line-clamp-2 min-h-[40px] px-1 mb-1 leading-tight group-hover:text-red-600 transition-colors">
+                            {{ sp.ten }}
+                        </h3>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-red-600 font-extrabold text-base">{{ sp.gia }}</span>
+                            <span class="text-gray-400 line-through text-xs">{{ sp.gia_cu }}</span>
                         </div>
                     </div>
-                    <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-auto" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
-                        Mua Trên TikTok
+                    
+                    <a href="{{ sp.link_affiliate }}" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-gray-900 hover:bg-red-600 text-white font-bold uppercase tracking-wider py-2.5 rounded-lg text-[11px] shadow-sm transition-colors duration-300">
+                        Mua trên TikTok Shop
                     </a>
                 </div>
             </div>
+            {% endfor %}
+            
         </div>
-        """
-    html_content = f"""
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lý Công Thức - Gym & Sports Store</title>
-        <!-- Thay sang CSS Bootstrap ổn định, không bị Render chặn -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-<style>
-       body {{ 
-            background-color: #111827; 
-            color: #d1d5db; 
-        }}
-        .navbar {{ 
-            background-color: #030712 !important; 
-            border-bottom: 1px solid #1f2937; 
-        }}
-        .hero-section {{ 
-            background-color: #030712; 
-            padding: 25px 20px; 
-            border-bottom: 1px solid #1f2937; 
-        }}
-        .footer {{ 
-            background-color: #030712; 
-            border-top: 1px solid #1f2937; 
-        }}
+    </main>
 
-        /* Hộp sản phẩm tự co giãn theo nội dung ảnh 3:4 */
-        .card {{
-            background-color: #1f2937 !important;
-            border: 1px solid #374151 !important;
-            border-radius: 12px !important;
-            overflow: hidden;
-            display: flex !important;
-            flex-direction: column !important;
-            margin-bottom: 12px;
-            height: 100% !important; /* Xóa bỏ max-height để hộp tự kéo dài ra */
-        }}
+    <footer class="bg-white border-t border-gray-100 py-6 mt-12 w-full text-center">
+        <p class="text-xs text-gray-500 font-medium">
+            📍 Địa chỉ kho: Quận 12, Thành phố Hồ Chí Minh
+        </p>
+    </footer>
 
-        .card img {{
-            width: 100% !important;
-            aspect-ratio: 3 / 4 !important; /* Khung chữ nhật đứng thời trang gym */
-            object-fit: cover !important;
-            display: block;
-        }}
+    <script>
+        function locDanhMuc(category, element) {
+            const tatCaThe = document.querySelectorAll('.the-san-pham');
+            tatCaThe.forEach(the => {
+                if (category === 'all' || the.getAttribute('data-category') === category) {
+                    the.classList.remove('hidden-card');
+                } else {
+                    the.classList.add('hidden-card');
+                }
+            });
 
-        .card-title {{
-            font-size: 0.8rem !important;
-            font-weight: 600;
-            color: #f3f4f6;
-            margin-bottom: 4px !important;
-            line-height: 1.3;
-        }}
+            const tatCaNut = document.querySelectorAll('.nut-loc');
+            tatCaNut.forEach(nut => {
+                nut.classList.remove('bg-red-600', 'text-white', 'shadow-sm', 'border-transparent');
+                nut.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+            });
 
-        /* Định dạng giá cũ nhỏ mờ gạch ngang */
-        .gia-cu {{
-            font-size: 0.7rem !important;
-            color: #9ca3af !important;
-        }}
+            element.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+            element.classList.add('bg-red-600', 'text-white', 'shadow-sm', 'border-transparent');
+        }
+    </script>
+</body>
+</html>
+"""
 
-        /* Hiệu ứng đổi màu chữ nhấp nháy sống động cho giá mới */
-        @keyframes nhapNhayGia {{
-            0%, 100% {{ color: #ef4444; }} /* Màu đỏ rực */
-            50% {{ color: #fbbf24; }} /* Đổi sang màu vàng cam lấp lánh */
-        }}
+@app.route('/')
+def index():
+    return render_template_string(GIAO_DIEN_HTML, san_pham=DANH_SACH_SAN_PHAM)
 
-        .gia-moi {{
-            font-size: 0.95rem !important;
-            animation: nhapNhayGia 1.5s infinite ease-in-out; /* Nhấp nháy liên tục */
-        }}
-    /* Hiệu ứng nhịp thở phập phồng tỏa sáng cho nút bấm */
-        @keyframes nhipThoButton {{
-            0% {{
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-            }}
-            50% {{
-                transform: scale(1.03); /* Phóng to nhẹ nút */
-                background-color: #dc2626 !important; /* Đỏ đậm hơn */
-                box-shadow: 0 0 10px 3px rgba(239, 68, 68, 0.5); /* Tỏa ánh hào quang */
-            }}
-            100% {{
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-            }}
-        }}
-
-        /* Ép nút bấm chạy hiệu ứng liên tục */
-        .btn-danger {{
-            animation: nhipThoButton 1.8s infinite ease-in-out !important;
-            transition: all 0.3s ease !important;
-        }}
-
-        /* Hiệu ứng nhấc nhẹ hộp sản phẩm khi xem trên máy tính */
-        .card {{
-            transition: transform 0.3s ease, border-color 0.3s ease !important;
-        }}
-        .card:hover {{
-            transform: translateY(-5px) !important;
-            border-color: #ef4444 !important;
-        }}
-        /* Định dạng bong bóng Zalo nổi ở góc phải màn hình */
-        .zalo-bubble {{
-            position: fixed !important;
-            bottom: 80px !important;
-            right: 20px !important;
-            z-index: 9999 !important; /* Đảm bảo luôn nổi lên trên cùng */
-            width: 60px;
-            height: 60px;
-            background-color: #0068ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 104, 255, 0.4);
-            transition: transform 0.3s ease;
-        }}
-
-        /* Hiệu ứng lắc lư tự động để thu hút khách bấm vào */
-        @keyframes lacZalo {{
-            0%, 100% {{ transform: rotate(0deg) scale(1); }}
-            10%, 30% {{ transform: rotate(-10deg) scale(1.05); }}
-            20%, 40% {{ transform: rotate(10deg) scale(1.05); }}
-            50% {{ transform: rotate(0deg) scale(1); }}
-        }}
-
-        .zalo-bubble {{
-            animation: lacZalo 2.5s infinite ease-in-out;
-        }}
-
-        .zalo-bubble:hover {{
-            transform: scale(1.1) !important;
-            background-color: #0056d6;
-        }}
-
-        .zalo-bubble img {{
-            width: 35px;
-            height: 35px;
-            object-fit: contain;
-        }}
-        </style>
-    </head>
-    <body>
-
-        <!-- MENU -->
-        <nav class="navbar navbar-dark bg-dark sticky-top">
-            <div class="container">
-                <a class="navbar-brand fw-bold text-uppercase tracking-wider" href="#">
-                    💥 LÝ CÔNG THỨC <span class="text-danger">STORE</span>
-                </a>
-            </div>
-        </nav>
-
-        <!-- BANNER -->
-        <div class="hero-section text-center">
-            <div class="container">
-                <h1 class="display-5 fw-bold text-white uppercase">Bộ Sưu Tập <span class="text-danger">Thời Trang & Gym</span></h1>
-                <p class="lead text-secondary max-w-xl mx-auto fs-6">Chuyên phụ kiện tập gym chất lượng cao cho anh em thể hình. Uy tín, chất lượng.</p>
-            </div>
-        </div>
-
-        <!-- MAIN CONTENT -->
-        <div class="container my-5">
-            <div class="row">
-                <!-- CỘT TRÁI SẢN PHẨM -->
-                <div class="col-12">
-                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-                        {html_san_pham}
-                    </div>
-                </div>
-                <!-- BONG BÓNG ZALO LIÊN KẾT NỔI -->
-                    <a href="https://zalo.me/0962731032" target="_blank" class="zalo-bubble" title="Chat qua Zalo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcHyrB2HX3UcU5IVx-DdWJJLol-jGa_rSuTDHLCQzmg&s=10" alt="Zalo" style="width: 35px !important; height: 35px !important; opacity: 1 !important; filter: none !important; object-fit: contain; display: block; margin: auto;">
-                    </a>
-
-                    <!-- FOOTER -->
-                    <footer class="footer bg-dark py-4 text-center border-top border-secondary">
-                        <div class="container">
-                            <p class="mb-1">📍 Địa chỉ kho: Quận 12, Thành phố Hồ Chí Minh</p>
-                            <p class="mb-1">✉️ Email: lycongthu@gmail.com</p>
-                            <p class="text-muted mb-0">© 2026 LÝ CÔNG THỨC STORE. All rights reserved.</p>
-                        </div>
-                    </footer>
-                </div>
-            </body>
-        </html>
-       """
-    return HTMLResponse(content=html_content)
-
-@app.get("/mua/{id_san_pham}")
-def dieu_huong_tiktok(id_san_pham: int):
-    for sp in DANH_SACH_SAN_PHAM:
-        if sp["id"] == id_san_pham:
-            return RedirectResponse(url=sp["link_tiktok"])
-    return RedirectResponse(url="/")
+if _name_ == "_main_":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
