@@ -167,7 +167,7 @@ def trang_chu():
             <div class="row">
                 <!-- CỘT TRÁI SẢN PHẨM -->
                 <div class="col-lg-9">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                    <div class="row row-cols-2 row-cols-md-3 g-2">
                         {html_san_pham}
                     </div>
                 </div>
