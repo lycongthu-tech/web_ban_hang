@@ -54,8 +54,8 @@ def trang_chu():
         <div class="col">
             <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 250px; max-height: 250px;">
                 <!-- 1. Phần hình ảnh nằm TRỌN VẸN PHÍA TRÊN: Phóng to phủ kín không còn vùng xám -->
-                <div class="overflow-hidden bg-secondary w-100" style="height: 140px;">
-                    <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover; display: block;">
+                <div class="overflow-hidden bg-secondary w-100">
+                    <img src="{anh_sp}" alt="{ten_sp}" class="w-100" style="aspect-ratio: 3 / 4 !important; object-fit: cover; display: block;">
                 </div>
                 <!-- 2. Phần thông tin chữ và nút bấm nằm NGAY NGẮN PHÍA DƯỚI -->
                 <div class="p-2 d-flex flex-column justify-content-between flex-grow-1" style="height: 110px;">
