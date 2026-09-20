@@ -51,17 +51,28 @@ def trang_chu():
         gia_sp = sp["gia"]
         anh_sp = sp["hinh_anh"]
         
-        html_san_pham += f"""
-        <div class="card">
-    <img src="{anh_sp}" alt="{ten_sp}">
-    <div class="card-body">
-        <h5 class="card-title">{ten_sp}</h5>
-        <p class="card-text">{gia_sp}đ</p>
-        <a href="/mua/{id_sp}" class="btn btn-danger">🔗 Mua Ngay Trên TikTok Để Nhận Giảm Giá Ngay</a>
-    </div>
-</div>
-"""
-
+    html_san_pham += f"""
+        <div class="col">
+            <div class="card h-100 border-secondary shadow-sm overflow-hidden" style="max-height: 150px;">
+                <div class="row g-0 h-100 flex-row">
+                    <!-- 50% Ben trai: Chua hinh anh -->
+                    <div class="col-6 bg-dark d-flex align-items-center justify-content-center overflow-hidden h-100">
+                        <img src="{anh_sp}" alt="{ten_sp}" class="img-fluid h-100 w-100" style="object-fit: cover;">
+                    </div>
+                    <!-- 50% Ben phai: Chua chu va nut bam -->
+                    <div class="col-6 p-2 d-flex flex-column justify-content-between text-start h-100">
+                        <div class="lh-sm">
+                            <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.85rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
+                            <p class="card-text text-danger fw-bold mb-0" style="font-size: 0.9rem;">{gia_sp}đ</p>
+                        </div>
+                        <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1" style="font-size: 0.7rem; white-space: normal; line-height: 1.2;">
+                            Mua Ngay Tren TikTok
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        """
     html_content = f"""
     <!DOCTYPE html>
     <html lang="vi">
