@@ -52,18 +52,18 @@ def trang_chu():
         anh_sp = sp["hinh_anh"]
         html_san_pham += f"""
         <div class="col">
-            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 280px;">
-                <!-- 1. Phần hình ảnh nằm TRỌN VẸN PHÍA TRÊN: Phóng to phủ kín -->
-                <div class="overflow-hidden bg-secondary w-100" style="height: 150px;">
+            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 250px; max-height: 250px;">
+                <!-- 1. Phần hình ảnh nằm TRỌN VẸN PHÍA TRÊN: Phóng to phủ kín không còn vùng xám -->
+                <div class="overflow-hidden bg-secondary w-100" style="height: 140px;">
                     <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover; display: block;">
                 </div>
                 <!-- 2. Phần thông tin chữ và nút bấm nằm NGAY NGẮN PHÍA DƯỚI -->
-                <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
+                <div class="p-2 d-flex flex-column justify-content-between flex-grow-1" style="height: 110px;">
                     <div class="lh-sm">
                         <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
                         <p class="card-text text-danger fw-bold mb-0" style="font-size: 0.85rem;">{gia_sp}đ</p>
                     </div>
-                    <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-2" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
+                    <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-1" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
                         Mua Trên TikTok
                     </a>
                 </div>
