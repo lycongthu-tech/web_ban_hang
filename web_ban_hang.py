@@ -81,60 +81,76 @@ def trang_chu():
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
 <style>
-        body {{ background-color: #111827; color: #d1d5db; }}
-        .navbar {{ background-color: #030712 !important; border-bottom: 1px solid #1f2937; }}
-        .hero-section {{ background-color: #030712; padding: 25px 20px; border-bottom: 1px solid #1f2937; }}
-        .footer {{ background-color: #030712; border-top: 1px solid #1f2937; color: #9ca3af; }}
-        
+        body {{ 
+            background-color: #111827; 
+            color: #d1d5db; 
+        }}
+        .navbar {{ 
+            background-color: #030712 !important; 
+            border-bottom: 1px solid #1f2937; 
+        }}
+        .hero-section {{ 
+            background-color: #030712; 
+            padding: 25px 20px; 
+            border-bottom: 1px solid #1f2937; 
+        }}
+        .footer {{ 
+            background-color: #030712; 
+            border-top: 1px solid #1f2937; 
+        }}
+
         .card {{
             background-color: #1f2937 !important;
             border: 1px solid #374151 !important;
             border-radius: 12px !important;
             overflow: hidden;
             display: flex !important;
-            flex-direction: row !important;
-            align-items: center;
-            padding: 8px;
+            flex-direction: column !important; /* Thay đổi từ row sang column để xếp dọc */
             margin-bottom: 12px;
+            min-height: 270px;
+            max-height: 270px;
         }}
-        
+
         .card img {{
-            width: 80px !important;
-            height: 80px !important;
-            object-fit: cover;
-            border-radius: 8px;
-            flex-shrink: 0;
+            width: 100% !important; /* Ảnh phóng lớn hết chiều rộng khung */
+            height: 140px !important; /* Chiều cao ảnh cố định vừa vặn nửa trên */
+            object-fit: cover !important; /* Ép ảnh tràn viền lấp đầy khoảng trống */
+            border-radius: 12px 12px 0 0;
+            display: block;
         }}
-        
+
         .card-body {{
-            padding: 0 0 0 12px !important;
+            padding: 8px !important; /* Tối ưu lại khoảng cách chữ */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            flex-grow: 1;
         }}
-        
+
         .card-title {{
-            font-size: 0.9rem !important;
+            font-size: 0.8rem !important;
             font-weight: 600;
             color: #f3f4f6;
-            margin-bottom: 2px !important;
+            margin-bottom: 4px !important;
             line-height: 1.3;
         }}
-        
+
         .card-text {{
-            font-size: 0.95rem !important;
+            font-size: 0.85rem !important;
             font-weight: 700;
             color: #f59e0b !important;
             margin-bottom: 6px !important;
         }}
-        
+
         .btn-danger {{
-            font-size: 0.75rem !important;
-            padding: 4px 12px !important;
-            border-radius: 20px !important;
+            font-size: 0.65rem !important;
+            padding: 6px 0px !important; /* Xóa khoảng trống đệm hai bên */
+            border-radius: 8px !important;
             background-color: #ef4444 !important;
             border: none !important;
-            width: fit-content;
+            width: 100% !important; /* Ép nút bấm trải rộng full 100% cân đối */
+            display: block !important;
+            text-align: center;
         }}
     </style>
     </head>
@@ -161,22 +177,12 @@ def trang_chu():
         <div class="container my-5">
             <div class="row">
                 <!-- CỘT TRÁI SẢN PHẨM -->
-                <div class="col-lg-9">
+                <div class="col-12">
                     <div class="row row-cols-2 row-cols-md-3 g-2">
                         {html_san_pham}
                     </div>
                 </div>
-                <!-- CỘT PHẢI SIDEBAR -->
-                <div class="col-lg-3 mt-4 mt-lg-0">
-                    <div class="p-3 bg-dark rounded border border-secondary shadow-sm mb-4">
-                        <h6 class="text-white uppercase fw-bold border-start border-danger border-3 ps-2 mb-3">Đánh Giá Khách Hàng</h6>
-                        <p class="small text-secondary italic">"Áo mặc ôm body rất khít, tập gym tôn dáng lắm shop ơi!"</p>
-                        <p class="small text-danger fw-bold text-end mb-0">- Tuấn Anh Nguyễn</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+               
         <!-- FOOTER -->
         <footer class="footer bg-dark py-4 text-center border-top border-secondary">
             <div class="container">
