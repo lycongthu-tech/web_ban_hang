@@ -52,18 +52,18 @@ def trang_chu():
         anh_sp = sp["hinh_anh"]
         html_san_pham += f"""
         <div class="col">
-            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 250px; max-height: 250px;">
-                <!-- 1. Phần hình ảnh nằm TRỌN VẸN PHÍA TRÊN: Phóng to phủ kín không còn vùng xám -->
+            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column">
+                <!-- 1. Phần hình ảnh nằm phía trên: Khung chữ nhật đứng 3:4 tôn dáng -->
                 <div class="overflow-hidden bg-secondary w-100">
                     <img src="{anh_sp}" alt="{ten_sp}" class="w-100" style="aspect-ratio: 3 / 4 !important; object-fit: cover; display: block;">
                 </div>
-                <!-- 2. Phần thông tin chữ và nút bấm nằm NGAY NGẮN PHÍA DƯỚI -->
-                <div class="p-2 d-flex flex-column justify-content-between flex-grow-1" style="height: 110px;">
-                    <div class="lh-sm">
+                <!-- 2. Phần thông tin chữ và nút bấm nằm phía dưới -->
+                <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
+                    <div class="lh-sm mb-2">
                         <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
                         <p class="card-text text-danger fw-bold mb-0" style="font-size: 0.85rem;">{gia_sp}đ</p>
                     </div>
-                    <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-1" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
+                    <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-auto" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
                         Mua Trên TikTok
                     </a>
                 </div>
@@ -99,6 +99,7 @@ def trang_chu():
             border-top: 1px solid #1f2937; 
         }}
 
+        /* Hộp sản phẩm tự co giãn theo nội dung ảnh 3:4 */
         .card {{
             background-color: #1f2937 !important;
             border: 1px solid #374151 !important;
@@ -107,22 +108,14 @@ def trang_chu():
             display: flex !important;
             flex-direction: column !important;
             margin-bottom: 12px;
-            height: 100%; /* Cho phép thẻ tự giãn theo nội dung thay vì ép chết */
+            height: 100% !important; /* Xóa bỏ max-height để hộp tự kéo dài ra */
         }}
 
         .card img {{
             width: 100% !important;
-            aspect-ratio: 3 / 4 !important; /* Khung chữ nhật đứng chuẩn tôn dáng quần áo */
+            aspect-ratio: 3 / 4 !important; /* Khung chữ nhật đứng thời trang gym */
             object-fit: cover !important;
             display: block;
-        }}
-
-        .card-body {{
-            padding: 8px !important; /* Tối ưu lại khoảng cách chữ */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
         }}
 
         .card-title {{
@@ -142,11 +135,11 @@ def trang_chu():
 
         .btn-danger {{
             font-size: 0.65rem !important;
-            padding: 6px 0px !important; /* Xóa khoảng trống đệm hai bên */
+            padding: 6px 0px !important;
             border-radius: 8px !important;
             background-color: #ef4444 !important;
             border: none !important;
-            width: 100% !important; /* Ép nút bấm trải rộng full 100% cân đối */
+            width: 100% !important;
             display: block !important;
             text-align: center;
         }}
