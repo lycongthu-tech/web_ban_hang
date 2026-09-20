@@ -81,7 +81,7 @@ def trang_chu():
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
 <style>
-        body {{ 
+       body {{ 
             background-color: #111827; 
             color: #d1d5db; 
         }}
@@ -143,7 +143,38 @@ def trang_chu():
             display: block !important;
             text-align: center;
         }}
-    </style>
+    /* Hiệu ứng nhịp thở phập phồng tỏa sáng cho nút bấm */
+        @keyframes nhipThoButton {{
+            0% {{
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }}
+            50% {{
+                transform: scale(1.03); /* Phóng to nhẹ nút */
+                background-color: #dc2626 !important; /* Đỏ đậm hơn */
+                box-shadow: 0 0 10px 3px rgba(239, 68, 68, 0.5); /* Tỏa ánh hào quang */
+            }}
+            100% {{
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }}
+        }}
+
+        /* Ép nút bấm chạy hiệu ứng liên tục */
+        .btn-danger {{
+            animation: nhipThoButton 1.8s infinite ease-in-out !important;
+            transition: all 0.3s ease !important;
+        }}
+
+        /* Hiệu ứng nhấc nhẹ hộp sản phẩm khi xem trên máy tính */
+        .card {{
+            transition: transform 0.3s ease, border-color 0.3s ease !important;
+        }}
+        .card:hover {{
+            transform: translateY(-5px) !important;
+            border-color: #ef4444 !important;
+        }}
+        </style>
     </head>
     <body>
 
