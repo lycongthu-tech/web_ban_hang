@@ -52,12 +52,12 @@ def trang_chu():
         anh_sp = sp["hinh_anh"]
         html_san_pham += f"""
         <div class="col">
-            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 260px;">
-                <!-- Phan hinh anh nam phia tren: Phong to phu kin -->
-                <div class="overflow-hidden bg-secondary w-100" style="height: 140px;">
+            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 280px;">
+                <!-- 1. Phần hình ảnh nằm TRỌN VẸN PHÍA TRÊN: Phóng to phủ kín -->
+                <div class="overflow-hidden bg-secondary w-100" style="height: 150px;">
                     <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover; display: block;">
                 </div>
-                <!-- Phan thong tin chu va nut bam nam phia duoi -->
+                <!-- 2. Phần thông tin chữ và nút bấm nằm NGAY NGẮN PHÍA DƯỚI -->
                 <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
                     <div class="lh-sm">
                         <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
