@@ -198,6 +198,15 @@ GIAO_DIEN_HTML = """
             element.classList.add('active');
         }
     </script>
+    <!-- BONG BÓNG MESSENGER LIÊN KẾT NỔI CỐ ĐỊNH Ở GÓC MÀN HÌNH -->
+    <a href="https://m.me/thuc.ly.165" target="_blank" rel="noopener noreferrer" 
+       style="position: fixed; bottom: 145px; right: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; background-color: #0084ff; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 132, 255, 0.35); transition: transform 0.3s ease-in-out;"
+       onmouseover="this.style.transform='scale(1.1)'" 
+       onmouseout="this.style.transform='scale(1)'">
+        <img src="https://scontent.fsgn5-7.fna.fbcdn.net/v/t39.30808-1/626864756_2559365824465215_7073198888247271318_n.jpg?stp=dst-jpg_tt6&cstp=mx635x642&ctp=s200x200&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHi4JHl0fGLLAfsw_Sr_kZi_EgIi-FIPff8SAiL4Ug99yEJ5BmVOB5z_2V14Brpm4GQi5SmoYrejPFctXaPChLw&_nc_ohc=w9zw0aWggrAQ7kNvwHMFJUY&_nc_oc=AdrZcrL3mB4bpOotbAY-xaVXgisZkjurWSUulAwct1HHhgsUKeH8sv9dnRpzuJyjylR-D8ypMdUt9R5_z21xeYiI&_nc_zt=24&_nc_ht=scontent.fsgn5-7.fna&_nc_gid=eIuwbgM8YzoOInap5Cq2pA&_nc_ss=7b2a8&oh=00_AQK-uRENhSZ1wspUmh68VJmlN8Q70kwhhPaPafKSN515Dw&oe=6AB5BB0A" 
+     alt="Liên hệ Messenger" 
+     style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    </a>
 
     <!-- BONG BÓNG ZALO LIÊN KẾT NỔI CỐ ĐỊNH Ở GÓC MÀN HÌNH -->
     <a href="https://zalo.me/0962731032" target="_blank" rel="noopener noreferrer" 
