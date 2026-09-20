@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template_string
 
 # Sử dụng cách khai báo chuỗi trực tiếp để tránh lỗi dính phông chữ hiển thị trên máy của bạn
-app = Flask("_main_")
+app = Flask("web_ban_hang")
 
 # 1. CƠ SỞ DỮ LIỆU SẢN PHẨM AFFILIATE (Dễ dàng thêm mới, chỉnh sửa tại đây)
 DANH_SACH_SAN_PHAM = [
@@ -192,6 +192,6 @@ GIAO_DIEN_HTML = """
 def index():
     return render_template_string(GIAO_DIEN_HTML, san_pham=DANH_SACH_SAN_PHAM)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
