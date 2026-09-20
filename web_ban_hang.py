@@ -105,17 +105,15 @@ def trang_chu():
             border-radius: 12px !important;
             overflow: hidden;
             display: flex !important;
-            flex-direction: column !important; /* Thay đổi từ row sang column để xếp dọc */
+            flex-direction: column !important;
             margin-bottom: 12px;
-            min-height: 270px;
-            max-height: 270px;
+            height: 100%; /* Cho phép thẻ tự giãn theo nội dung thay vì ép chết */
         }}
 
         .card img {{
-            width: 100% !important; /* Ảnh phóng lớn hết chiều rộng khung */
-            height: 140px !important; /* Chiều cao ảnh cố định vừa vặn nửa trên */
-            object-fit: cover !important; /* Ép ảnh tràn viền lấp đầy khoảng trống */
-            border-radius: 12px 12px 0 0;
+            width: 100% !important;
+            aspect-ratio: 1 / 1 !important; /* Ép khung ảnh luôn là hình vuông chuẩn trên mọi thiết bị */
+            object-fit: cover !important;
             display: block;
         }}
 
@@ -178,7 +176,7 @@ def trang_chu():
             <div class="row">
                 <!-- CỘT TRÁI SẢN PHẨM -->
                 <div class="col-12">
-                    <div class="row row-cols-2 row-cols-md-3 g-2">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
                         {html_san_pham}
                     </div>
                 </div>
