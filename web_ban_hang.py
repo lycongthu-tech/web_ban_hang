@@ -47,11 +47,11 @@ def trang_chu():
     html_san_pham += f"""
         <div class="col">
             <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 260px;">
-                <!-- Phần hình ảnh nằm phía trên: Phóng to phủ kín -->
+                <!-- Phan hinh anh nam phia tren: Phong to phu kin -->
                 <div class="overflow-hidden bg-secondary w-100" style="height: 140px;">
                     <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover; display: block;">
                 </div>
-                <!-- Phần thông tin chữ và nút bấm nằm phía dưới -->
+                <!-- Phan thong tin chu va nut bam nam phia duoi -->
                 <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
                     <div class="lh-sm">
                         <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
