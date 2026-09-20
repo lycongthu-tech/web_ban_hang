@@ -245,7 +245,7 @@ def trang_chu():
                 </div>
                 <!-- BONG BÓNG ZALO LIÊN KẾT NỔI -->
                     <a href="https://zalo.me/0962731032" target="_blank" class="zalo-bubble" title="Chat qua Zalo">
-                        <img src="https://download.com.vn" alt="Zalo" style="width: 35px !important; height: 35px !important; opacity: 1 !important; filter: none !important; object-fit: contain; display: block; margin: auto;">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcHyrB2HX3UcU5IVx-DdWJJLol-jGa_rSuTDHLCQzmg&s=10" alt="Zalo" style="width: 35px !important; height: 35px !important; opacity: 1 !important; filter: none !important; object-fit: contain; display: block; margin: auto;">
                     </a>
 
                     <!-- FOOTER -->
