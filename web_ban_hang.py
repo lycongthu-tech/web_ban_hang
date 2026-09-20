@@ -63,6 +63,26 @@ DANH_SACH_SAN_PHAM = [
         "tag": "Basic",
         "link_affiliate": "https://tiktok.com",
         "anh": "https://unsplash.com"
+    },
+     {
+        "id": 7,
+        "ten": "Whey Protein Tăng Cơ Giảm Mỡ Hấp Thu Nhanh Cao Cấp",
+        "gia": "890.000đ",
+        "gia_cu": "1.200.000đ",
+        "danh_muc": "whey-tpbs",
+        "tag": "Bán chạy",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
+    },
+    {
+        "id": 8,
+        "ten": "BCAA Hỗ Trợ Phục Hồi Cơ Bắp Trong Lúc Tập",
+        "gia": "550.000đ",
+        "gia_cu": "750.000đ",
+        "danh_muc": "whey-tpbs",
+        "tag": "Giá tốt",
+        "link_affiliate": "https://tiktok.com",
+        "anh": "https://unsplash.com"
     }
 ]
 
@@ -115,6 +135,7 @@ GIAO_DIEN_HTML = """
             <button onclick="locDanhMuc('ao-gym', this)" class="nut-loc">Áo tập gym</button>
             <button onclick="locDanhMuc('quan-gym', this)" class="nut-loc">Quần tập gym</button>
             <button onclick="locDanhMuc('phu-kien', this)" class="nut-loc">Phụ kiện & Đai lưng</button>
+            <button onclick="locDanhMuc('whey-tpbs', this)" class="nut-loc">Whey & TPBS</button>
         </div>
     </section>
 
