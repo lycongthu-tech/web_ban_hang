@@ -174,6 +174,45 @@ def trang_chu():
             transform: translateY(-5px) !important;
             border-color: #ef4444 !important;
         }}
+        /* Định dạng bong bóng Zalo nổi ở góc phải màn hình */
+        .zalo-bubble {{
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 9999 !important; /* Đảm bảo luôn nổi lên trên cùng */
+            width: 60px;
+            height: 60px;
+            background-color: #0068ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 104, 255, 0.4);
+            transition: transform 0.3s ease;
+        }}
+
+        /* Hiệu ứng lắc lư tự động để thu hút khách bấm vào */
+        @keyframes lacZalo {{
+            0%, 100% {{ transform: rotate(0deg) scale(1); }}
+            10%, 30% {{ transform: rotate(-10deg) scale(1.05); }}
+            20%, 40% {{ transform: rotate(10deg) scale(1.05); }}
+            50% {{ transform: rotate(0deg) scale(1); }}
+        }}
+
+        .zalo-bubble {{
+            animation: lacZalo 2.5s infinite ease-in-out;
+        }}
+
+        .zalo-bubble:hover {{
+            transform: scale(1.1) !important;
+            background-color: #0056d6;
+        }}
+
+        .zalo-bubble img {{
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }}
         </style>
     </head>
     <body>
@@ -204,7 +243,10 @@ def trang_chu():
                         {html_san_pham}
                     </div>
                 </div>
-               
+                <!-- BONG BÓNG ZALO LIÊN KẾT NỔI -->
+                <a href="https://zalo.me/0962731032" target="_blank" class="zalo-bubble" title="Chat qua Zalo">
+                    <img src="https://wikimedia.org" alt="Zalo">
+                </a>
         <!-- FOOTER -->
         <footer class="footer bg-dark py-4 text-center border-top border-secondary">
             <div class="container">
