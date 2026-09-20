@@ -177,7 +177,7 @@ def trang_chu():
         /* Định dạng bong bóng Zalo nổi ở góc phải màn hình */
         .zalo-bubble {{
             position: fixed !important;
-            bottom: 20px !important;
+            bottom: 80px !important;
             right: 20px !important;
             z-index: 9999 !important; /* Đảm bảo luôn nổi lên trên cùng */
             width: 60px;
@@ -244,22 +244,23 @@ def trang_chu():
                     </div>
                 </div>
                 <!-- BONG BÓNG ZALO LIÊN KẾT NỔI -->
-                <a href="https://zalo.me/0962731032" target="_blank" class="zalo-bubble" title="Chat qua Zalo">
-                    <img src="https://wikimedia.org" alt="Zalo">
-                </a>
-        <!-- FOOTER -->
-        <footer class="footer bg-dark py-4 text-center border-top border-secondary">
-            <div class="container">
-                <p class="mb-1">📍 Địa chỉ kho: Quận 12, Thành phố Hồ Chí Minh</p>
-                <p class="mb-1">✉️ Email: lycongthu@gmail.com</p>
-                <p class="text-muted mb-0">© 2026 LÝ CÔNG THỨC STORE. All rights reserved.</p>
-            </div>
-        </footer>
+                    <a href="https://zalo.me/0962731032" target="_blank" class="zalo-bubble" title="Chat qua Zalo">
+                        <img src="https://download.com.vn" alt="Zalo">
+                    </a>
 
-    </body>
-    </html>
-    """
-    return html_content
+                    <!-- FOOTER -->
+                    <footer class="footer bg-dark py-4 text-center border-top border-secondary">
+                        <div class="container">
+                            <p class="mb-1">📍 Địa chỉ kho: Quận 12, Thành phố Hồ Chí Minh</p>
+                            <p class="mb-1">✉️ Email: lycongthu@gmail.com</p>
+                            <p class="text-muted mb-0">© 2026 LÝ CÔNG THỨC STORE. All rights reserved.</p>
+                        </div>
+                    </footer>
+                </div>
+            </body>
+        </html>
+       """
+    return HTMLResponse(content=html_content)
 
 @app.get("/mua/{id_san_pham}")
 def dieu_huong_tiktok(id_san_pham: int):
