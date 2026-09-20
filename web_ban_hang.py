@@ -150,6 +150,59 @@ GIAO_DIEN_HTML = """
         footer { background-color: #ffffff; border-top: 1px solid #e5e7eb; padding: 20px 0; text-align: center; width: 100%; }
         footer p { margin: 0; font-size: 11px; color: #6b7280; }
         .hidden-card { opacity: 0; transform: scale(0.9); position: absolute; visibility: hidden; width: 0; height: 0; padding: 0; margin: 0; border: none; }
+        .category-btn, .buy-btn, button {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Rê chuột hoặc chạm vào: Nút nổi nhẹ lên và sáng hơn */
+.category-btn:hover, .buy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.1);
+}
+
+/* Khi bấm giữ nút: Thu nhỏ nhẹ tạo cảm giác đàn hồi cực tốt */
+.category-btn:active, .buy-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Hiệu ứng bong bóng Zalo tự bay nhấp nhô liên tục */
+.zalo-bubble {
+    animation: floatAnimation 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+/* Rê chuột vào icon Zalo sẽ tự phóng to và hơi xoay nhẹ nhẹ */
+.zalo-bubble:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 3. Hiệu ứng xuất hiện mượt mà khi tải trang cho các thẻ sản phẩm */
+.grid-container > div {
+    animation: fadeInProduct 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInProduct {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body>
