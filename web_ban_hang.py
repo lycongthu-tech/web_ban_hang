@@ -72,24 +72,24 @@ def trang_chu():
         <!-- Thay sang CSS Bootstrap ổn định, không bị Render chặn -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
        body {{ background-color: #111827; color: #d1d5db; }}
+<style>
+        body {{ background-color: #111827; color: #d1d5db; }}
         .navbar {{ background-color: #030712 !important; border-bottom: 1px solid #1f2937; }}
         .hero-section {{ background-color: #030712; padding: 25px 20px; border-bottom: 1px solid #1f2937; }}
         .footer {{ background-color: #030712; border-top: 1px solid #1f2937; color: #9ca3af; }}
         
-        /* Giao diện Card sản phẩm dạng hàng ngang nhỏ gọn mềm mại */
         .card {{
             background-color: #1f2937 !important;
             border: 1px solid #374151 !important;
             border-radius: 12px !important;
             overflow: hidden;
             display: flex !important;
-            flex-direction: row !important; /* Ép nội dung nằm ngang */
+            flex-direction: row !important;
             align-items: center;
             padding: 8px;
             margin-bottom: 12px;
         }}
         
-        /* Thu nhỏ ảnh sản phẩm vừa vặn */
         .card img {{
             width: 80px !important;
             height: 80px !important;
@@ -98,7 +98,6 @@ def trang_chu():
             flex-shrink: 0;
         }}
         
-        /* Khung thông tin chữ nhỏ gọn gàng bên phải */
         .card-body {{
             padding: 0 0 0 12px !important;
             display: flex;
@@ -107,7 +106,7 @@ def trang_chu():
         }}
         
         .card-title {{
-            font-size: 0.9rem !important; /* Hạ cỡ chữ tiêu đề */
+            font-size: 0.9rem !important;
             font-weight: 600;
             color: #f3f4f6;
             margin-bottom: 2px !important;
@@ -115,13 +114,12 @@ def trang_chu():
         }}
         
         .card-text {{
-            font-size: 0.95rem !important; /* Hạ cỡ chữ giá tiền */
+            font-size: 0.95rem !important;
             font-weight: 700;
             color: #f59e0b !important;
             margin-bottom: 6px !important;
         }}
         
-        /* Nút link TikTok thu nhỏ tinh tế */
         .btn-danger {{
             font-size: 0.75rem !important;
             padding: 4px 12px !important;
@@ -130,6 +128,7 @@ def trang_chu():
             border: none !important;
             width: fit-content;
         }}
+    </style>
     </head>
     <body>
 
