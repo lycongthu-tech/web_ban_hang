@@ -57,7 +57,7 @@ def trang_chu():
     <div class="card-body">
         <h5 class="card-title">{ten_sp}</h5>
         <p class="card-text">{gia_sp}đ</p>
-        <a href="/mua/{id_sp}" class="btn btn-danger">🛒 Mua Ngay Trên TikTok</a>
+        <a href="/mua/{id_sp}" class="btn btn-danger">🔗 Mua Ngay Trên TikTok Để Nhận Giảm Giá Ngay</a>
     </div>
 </div>
 """
