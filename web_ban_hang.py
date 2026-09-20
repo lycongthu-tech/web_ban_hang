@@ -51,7 +51,7 @@ def trang_chu():
         gia_sp = sp["gia"]
         anh_sp = sp["hinh_anh"]
         
-    html_san_pham += f"""
+        html_san_pham += f"""
         <div class="col">
             <div class="card h-100 border-secondary shadow-sm overflow-hidden" style="max-height: 150px;">
                 <div class="row g-0 h-100 flex-row">
