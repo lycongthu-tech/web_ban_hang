@@ -183,6 +183,21 @@ GIAO_DIEN_HTML = """
             element.classList.add('active');
         }
     </script>
+    <script>
+        function locDanhMuc(category, element) {
+            // (Đoạn mã JavaScript lọc danh mục của bạn giữ nguyên ở đây...)
+        }
+    </script>
+
+    <!-- BONG BÓNG ZALO LIÊN KẾT NỔI CỐ ĐỊNH Ở GÓC MÀN HÌNH -->
+    <a href="https://zalo.me/0962731032" target="_blank" rel="noopener noreferrer" 
+       style="position: fixed; bottom: 80px; right: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; background-color: #0068ff; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 104, 255, 0.35); transition: transform 0.3s ease-in-out;"
+       onmouseover="this.style.transform='scale(1.1)'" 
+       onmouseout="this.style.transform='scale(1)'">
+        <img src="https://wikimedia.org" 
+             alt="Liên hệ Zalo" style="width: 32px; height: 32px; object-fit: contain;">
+    </a>
+
 </body>
 </html>
 """
