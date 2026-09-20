@@ -44,6 +44,7 @@ DANH_SACH_SAN_PHAM = [
 
 @app.get("/", response_class=HTMLResponse)
 def trang_chu():
+    html_san_pham = "" 
     html_san_pham += f"""
         <div class="col">
             <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 260px;">
