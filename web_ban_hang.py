@@ -57,9 +57,10 @@ def trang_chu():
                 <div class="row g-0 h-100 flex-row">
                     <!-- 50% Ben trai: Chua hinh anh -->
                     <!-- Đây là thẻ mở div -->
-        <div class="col-6 bg-dark overflow-hidden h-100 p-0">
-        <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover; display: block;">
-        </div>
+       <!-- 50% Ben trai: Chinh anh luon o giua va lap day o vuong -->
+                    <div class="col-6 bg-dark overflow-hidden position-relative" style="min-height: 150px;">
+                        <img src="{anh_sp}" alt="{ten_sp}" class="position-absolute top-50 start-50 translate-middle w-100 h-100" style="object-fit: cover;">
+                    </div>
                     <!-- 50% Ben phai: Chua chu va nut bam -->
                     <div class="col-6 p-2 d-flex flex-column justify-content-between text-start h-100">
                         <div class="lh-sm">
