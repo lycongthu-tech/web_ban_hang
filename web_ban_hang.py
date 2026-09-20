@@ -185,7 +185,17 @@ GIAO_DIEN_HTML = """
     </script>
     <script>
         function locDanhMuc(category, element) {
-            // (Đoạn mã JavaScript lọc danh mục của bạn giữ nguyên ở đây...)
+            const tatCaThe = document.querySelectorAll('.the-san-pham');
+            tatCaThe.forEach(the => {
+                if (category === 'all' || the.getAttribute('data-category') === category) {
+                    the.classList.remove('hidden-card');
+                } else {
+                    the.classList.add('hidden-card');
+                }
+            });
+            const tatCaNut = document.querySelectorAll('.nut-loc');
+            tatCaNut.forEach(nut => { nut.classList.remove('active'); });
+            element.classList.add('active');
         }
     </script>
 
@@ -194,7 +204,7 @@ GIAO_DIEN_HTML = """
        style="position: fixed; bottom: 80px; right: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; background-color: #0068ff; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 104, 255, 0.35); transition: transform 0.3s ease-in-out;"
        onmouseover="this.style.transform='scale(1.1)'" 
        onmouseout="this.style.transform='scale(1)'">
-        <img src="https://wikimedia.org" 
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcHyrB2HX3UcU5IVx-DdWJJLol-jGa_rSuTDHLCQzmg&s=10" 
              alt="Liên hệ Zalo" style="width: 32px; height: 32px; object-fit: contain;">
     </a>
 
