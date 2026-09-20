@@ -44,33 +44,22 @@ DANH_SACH_SAN_PHAM = [
 
 @app.get("/", response_class=HTMLResponse)
 def trang_chu():
-    html_san_pham = ""
-    for sp in DANH_SACH_SAN_PHAM:
-        id_sp = sp["id"]
-        ten_sp = sp["ten"]
-        gia_sp = sp["gia"]
-        anh_sp = sp["hinh_anh"]
-        
-        html_san_pham += f"""
+    html_san_pham += f"""
         <div class="col">
-            <div class="card h-100 border-secondary shadow-sm overflow-hidden" style="max-height: 150px;">
-                <div class="row g-0 h-100 flex-row">
-                    <!-- 50% Ben trai: Chua hinh anh -->
-                    <!-- Đây là thẻ mở div -->
-       <!-- 50% Ben trai: Chinh anh luon o giua va lap day o vuong -->
-                    <div class="col-6 bg-dark overflow-hidden position-relative" style="min-height: 150px;">
-                        <img src="{anh_sp}" alt="{ten_sp}" class="position-absolute top-50 start-50 translate-middle w-100 h-100" style="object-fit: cover;">
+            <div class="card h-100 border-secondary shadow-sm overflow-hidden bg-dark text-start d-flex flex-column" style="min-height: 260px;">
+                <!-- Phần hình ảnh nằm phía trên: Phóng to phủ kín -->
+                <div class="overflow-hidden bg-secondary w-100" style="height: 140px;">
+                    <img src="{anh_sp}" alt="{ten_sp}" class="w-100 h-100" style="object-fit: cover; display: block;">
+                </div>
+                <!-- Phần thông tin chữ và nút bấm nằm phía dưới -->
+                <div class="p-2 d-flex flex-column justify-content-between flex-grow-1">
+                    <div class="lh-sm">
+                        <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
+                        <p class="card-text text-danger fw-bold mb-0" style="font-size: 0.85rem;">{gia_sp}đ</p>
                     </div>
-                    <!-- 50% Ben phai: Chua chu va nut bam -->
-                    <div class="col-6 p-2 d-flex flex-column justify-content-between text-start h-100">
-                        <div class="lh-sm">
-                            <h6 class="card-title text-white fw-bold mb-1" style="font-size: 0.85rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; white-space: normal;">{ten_sp}</h6>
-                            <p class="card-text text-danger fw-bold mb-0" style="font-size: 0.9rem;">{gia_sp}đ</p>
-                        </div>
-                        <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1" style="font-size: 0.7rem; white-space: normal; line-height: 1.2;">
-                            Mua Ngay Tren TikTok
-                        </a>
-                    </div>
+                    <a href="/mua/{id_sp}" class="btn btn-danger btn-sm w-100 fw-bold py-1 mt-2" style="font-size: 0.65rem; white-space: normal; line-height: 1.1;">
+                        Mua Trên TikTok
+                    </a>
                 </div>
             </div>
         </div>
