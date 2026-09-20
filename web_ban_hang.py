@@ -112,7 +112,7 @@ def trang_chu():
 
         .card img {{
             width: 100% !important;
-            aspect-ratio: 1 / 1 !important; /* Ép khung ảnh luôn là hình vuông chuẩn trên mọi thiết bị */
+            aspect-ratio: 3 / 4 !important; /* Khung chữ nhật đứng chuẩn tôn dáng quần áo */
             object-fit: cover !important;
             display: block;
         }}
