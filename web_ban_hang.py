@@ -9,7 +9,7 @@ DANH_SACH_SAN_PHAM = [
         "id": 1,
         "ten": "Áo Thun Nén Gym Nam - Dài Tay",
         "gia": "109.000đ",
-        "hinh_anh": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpXnJFkIaYCNTqwtkDGxYdVb_X8U8joDtbh1CA-pM0TQ&s=10",
+        "hinh_anh": "https://img.lazcdn.com/g/p/f2e518da82946459f147d1911bcc3ea5.jpg_720x720q80.jpg",
         "link_tiktok": "https://tiktok.com"
     },
     {
