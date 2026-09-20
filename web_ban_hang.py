@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template_string
 
 # Sử dụng cách khai báo chuỗi trực tiếp để tránh lỗi dính phông chữ hiển thị trên máy của bạn
-app = Flask("web_ban_hang")
+app = Flask(__name__)
 
 # 1. CƠ SỞ DỮ LIỆU SẢN PHẨM AFFILIATE (Dễ dàng thêm mới, chỉnh sửa tại đây)
 DANH_SACH_SAN_PHAM = [
