@@ -202,7 +202,24 @@ GIAO_DIEN_HTML = """
         transform: translateY(0);
     }
 }
+.btn-affiliate {
+    animation: breathingAnimation 2s ease-in-out infinite;
+}
 
+@keyframes breathingAnimation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.04); /* Phóng to nhẹ 4% */
+        box-shadow: 0 8px 20px rgba(254, 44, 85, 0.4); /* Tạo quầng sáng mờ màu đỏ thương hiệu TikTok */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
     </style>
 </head>
 <body>
